@@ -1,68 +1,48 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 
-import BioData from "./components/BioData";
-
-const bioData = [
-	{
-		name: "SR Setu",
-		email: "srsetu@gmail.com",
-		phone: "+245456452132452",
-		github: "github.com/srsetu",
-		skills: ["JS", "WP", "CSS", "REACT", "Next"],
-		interests: ["Chess", "Football", "Entrepreneurship"],
-		socialLinks: [
-			{ platformName: "FB", handle: "fb/srsetu" },
-			{ platformName: "Twitter", handle: "x/srsetu" },
-			{ platformName: "LinkedIn", handle: "linkedin/In/srsetu" },
-		],
-	},
-	{
-		name: "Mahir Asief",
-		email: "asiefmahir1@gmail.com",
-		phone: "+468454565456",
-		github: "github.com/asiefmahir",
-		skills: ["JS", "REACT", "Next"],
-		interests: ["Chess", "Football"],
-		socialLinks: [
-			{ platformName: "FB", handle: "fb/asiefmahir" },
-			{ platformName: "Twitter", handle: "x/asiefmahir" },
-			{ platformName: "LinkedIn", handle: "linkedin/In/asiefmahir" },
-		],
-	},
-	{
-		name: "Sumit Shaha",
-		email: "sumitshaha@gmail.com",
-		phone: "+468454565456",
-		github: "github.com/sumitshaha",
-		skills: ["JS", "REACT", "Next"],
-		interests: ["Chess", "Football"],
-		socialLinks: [
-			{ platformName: "FB", handle: "fb/sumitshaha" },
-			{ platformName: "Twitter", handle: "x/sumitshaha" },
-			{ platformName: "LinkedIn", handle: "linkedin/In/sumitshaha" },
-		],
-	},
-];
-
 function App() {
-	// console.log("I am called");
+	// Re-Render
+	console.log("I am called");
+
+	// State
+	const [dynamicCounter, setDynamicCounter] = useState(20);
+	const [dynamicCounter2, setDynamicCounter2] = useState(15);
+
+	const increaseHandler = () => {
+		setDynamicCounter(dynamicCounter + 1);
+		// setDynamicCounter(20 + 1)
+		// setDynamicCounter(21)
+
+		// dynamicCounter = 21
+	};
+	const decreaseHandler = () => {
+		setDynamicCounter(dynamicCounter - 1);
+	};
+
+	const increaseHandler2 = () => {
+		setDynamicCounter2(dynamicCounter2 + 1);
+		// setDynamicCounter(20 + 1)
+		// setDynamicCounter(21)
+
+		// dynamicCounter = 21
+	};
+	const decreaseHandler2 = () => {
+		setDynamicCounter(dynamicCounter2 - 1);
+	};
+
 	return (
 		<div className="App">
-			{bioData.map((singleBioData) => (
-				<>
-					<BioData
-						name={singleBioData.name}
-						email={singleBioData.email}
-						phone={singleBioData.phone}
-						github={singleBioData.github}
-						skills={singleBioData.skills}
-						interests={singleBioData.interests}
-						socialLinks={singleBioData.socialLinks}
-					/>
-					<hr />
-				</>
-			))}
+			<div className="counter-app">
+				<p>The value of the counter is {dynamicCounter}</p>
+				<button onClick={increaseHandler}>Increase By 1</button>
+				<button onClick={decreaseHandler}>Decrease By 1</button>
+			</div>
+			<div className="counter-app-2">
+				<p>The value of the counter is {dynamicCounter2}</p>
+				<button onClick={increaseHandler2}>Increase By 1</button>
+				<button onClick={decreaseHandler2}>Decrease By 1</button>
+			</div>
 		</div>
 	);
 }
