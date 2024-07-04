@@ -3,45 +3,60 @@ import "./App.css";
 
 function App() {
 	// Re-Render
-	console.log("I am called");
+	const [noteTitle, setNoteTitle] = useState("");
+	const [notes, setNotes] = useState([
+		{ id: 1, title: "Note 1" },
+		{ id: 2, title: "Note 2" },
+	]);
+	const [editMode, setEditMode] = useState(false);
+	const [editableNote, setEditableNote] = useState(null);
 
-	// State
-	const [dynamicCounter, setDynamicCounter] = useState(20);
-	const [dynamicCounter2, setDynamicCounter2] = useState(15);
-
-	const increaseHandler = () => {
-		setDynamicCounter(dynamicCounter + 1);
-		// setDynamicCounter(20 + 1)
-		// setDynamicCounter(21)
-
-		// dynamicCounter = 21
-	};
-	const decreaseHandler = () => {
-		setDynamicCounter(dynamicCounter - 1);
+	const changeTitleHandler = (e) => {
+		setNoteTitle(e.target.value);
+		// noteTitle = e.target.value
 	};
 
-	const increaseHandler2 = () => {
-		setDynamicCounter2(dynamicCounter2 + 1);
-		// setDynamicCounter(20 + 1)
-		// setDynamicCounter(21)
+	const submitHandler = (e) => {
+		e.preventDefault();
+		if (noteTitle.trim() === "") {
+			return alert(`Please provide a valid title`);
+		}
 
-		// dynamicCounter = 21
-	};
-	const decreaseHandler2 = () => {
-		setDynamicCounter(dynamicCounter2 - 1);
+		const newNote = {
+			id: Date.now() + "",
+			title: noteTitle,
+		};
+
+		setNotes([...notes, newNote]);
+		setNoteTitle("");
+
+		// notes = [newNote, ...notes]
 	};
 
 	return (
 		<div className="App">
-			<div className="counter-app">
-				<p>The value of the counter is {dynamicCounter}</p>
-				<button onClick={increaseHandler}>Increase By 1</button>
-				<button onClick={decreaseHandler}>Decrease By 1</button>
-			</div>
-			<div className="counter-app-2">
-				<p>The value of the counter is {dynamicCounter2}</p>
-				<button onClick={increaseHandler2}>Increase By 1</button>
-				<button onClick={decreaseHandler2}>Decrease By 1</button>
+			<form onSubmit={submitHandler}>
+				<input
+					type="text"
+					value={noteTitle}
+					onChange={changeTitleHandler}
+				/>
+				<button type="submit">Add Note</button>
+			</form>
+			<div className="note-list">
+				<h2>All Notes</h2>
+				<ul>
+					{notes.map((note) => (
+						<>
+							<li key={note.id}>
+								<span>{note.title}</span>
+								<button>Edit</button>
+								<button>Delete</button>
+							</li>
+							<br />
+						</>
+					))}
+				</ul>
 			</div>
 		</div>
 	);
