@@ -4,10 +4,7 @@ import "./App.css";
 function App() {
 	// Re-Render
 	const [noteTitle, setNoteTitle] = useState("");
-	const [notes, setNotes] = useState([
-		{ id: 1, title: "Note 1" },
-		{ id: 2, title: "Note 2" },
-	]);
+	const [notes, setNotes] = useState([]);
 	const [editMode, setEditMode] = useState(false);
 	const [editableNote, setEditableNote] = useState(null);
 
@@ -22,6 +19,10 @@ function App() {
 			return alert(`Please provide a valid title`);
 		}
 
+		editMode ? updateHandler() : createHandler();
+	};
+
+	const createHandler = () => {
 		const newNote = {
 			id: Date.now() + "",
 			title: noteTitle,
@@ -44,6 +45,26 @@ function App() {
 		// notes = updatedNotes
 	};
 
+	const editHandler = (note) => {
+		setEditMode(true);
+		setEditableNote(note);
+		setNoteTitle(note.title);
+	};
+
+	const updateHandler = () => {
+		const updatedNotes = notes.map((item) => {
+			if (item.id === editableNote.id) {
+				return { ...item, title: noteTitle };
+			}
+			return item;
+		});
+
+		setNotes(updatedNotes);
+		setEditMode(false);
+		setNoteTitle("");
+		// notes = updatedNotes
+	};
+
 	return (
 		<div className="App">
 			<form onSubmit={submitHandler}>
@@ -52,7 +73,9 @@ function App() {
 					value={noteTitle}
 					onChange={changeTitleHandler}
 				/>
-				<button type="submit">Add Note</button>
+				<button type="submit">
+					{editMode ? "Update Note" : "Add Note"}
+				</button>
 			</form>
 			<div className="note-list">
 				<h2>All Notes</h2>
@@ -61,7 +84,9 @@ function App() {
 						<>
 							<li key={note.id}>
 								<span>{note.title}</span>
-								<button>Edit</button>
+								<button onClick={() => editHandler(note)}>
+									Edit
+								</button>
 								<button onClick={() => removeHandler(note.id)}>
 									Delete
 								</button>
