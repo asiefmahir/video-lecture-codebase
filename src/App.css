@@ -2,6 +2,15 @@
   text-align: center;
   margin-top: 20px;
 }
+
+.student-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.list {
+  border: 1px solid black;
+}
 /* .bio-data {
   border: 1px solid black;
   margin-top: 20px;
