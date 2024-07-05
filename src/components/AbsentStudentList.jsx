@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { StudentCtx } from "../contexts/Student";
 
 const AbsentStudentList = () => {
-	const { students, toggleList } = useContext(StudentCtx);
+	const { studentStates, toggleList } = useContext(StudentCtx);
 	return (
 		<div className="list absent-students">
 			<h2>Absent Students</h2>
 			<ul>
-				{students
+				{studentStates.students
 					.filter((item) => item.isPresent === false)
 					.map((student) => (
 						<li key={student.id}>
