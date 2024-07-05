@@ -1,40 +1,44 @@
-import { useReducer } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
-import StudentForm from "./components/StudentForm";
-import StudentSection from "./components/StudentSection";
 
-const counterReducer = (state, action) => {
-	// console.log(state, "state");
-	console.log(action, "action");
-	// if (action === "increase_counter") {
-	// 	return state + 1;
-	// } else if (action === "decrease_counter") {
-	// 	return state - 1;
-	// }
+function App() {
+	const [posts, setPosts] = useState([]);
+	const [counter, setCounter] = useState(10);
+	const [counter2, setCounter2] = useState(22);
 
-	switch (action.type) {
-		case "increase_counter": {
-			return state + action.payload;
-		}
-
-		case "decrease_counter": {
-			return state - action.payload;
-		}
-		default: {
-			return state;
-		}
-	}
-};
-
-function App(props) {
-	console.log("I am re-rendering");
 	// Re-Render
-	const [counter, dispatch] = useReducer(counterReducer, 20);
+
+	useEffect(() => {
+		console.log("I am inside side-effect");
+		fetch(`https://jsonplaceholder.typicode.com/posts?_limit=5`)
+			.then((res) => res.json())
+			.then((data) => {
+				// state set/change
+				setPosts(data);
+			});
+	}, []);
+
+	console.log("I am re-rendering");
+
 	return (
 		<div className="App">
-			<StudentForm />
-			<StudentSection />
+			<h2>All Posts</h2>
+			<ul>
+				{posts?.map((post) => (
+					<li key={post.id}>{post.title}</li>
+				))}
+			</ul>
+
+			<p>The value of the counter is {counter}</p>
+			<button onClick={() => setCounter(counter + 1)}>
+				Increase By 1
+			</button>
+			<hr />
+			<p>The value of the counter is {counter2}</p>
+			<button onClick={() => setCounter2(counter2 + 3)}>
+				Increase By 3
+			</button>
 		</div>
 	);
 }
