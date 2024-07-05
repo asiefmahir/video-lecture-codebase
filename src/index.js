@@ -3,16 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import StudentProvider from "./contexts/Student";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<StudentProvider>
-		<App>
-			<div>Hello World</div>
-		</App>
-	</StudentProvider>,
+	<App />,
 	// </React.StrictMode>
 );
 
