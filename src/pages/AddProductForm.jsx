@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useCreateProductMutation } from "../store/features/product";
+// import { useCreateProductMutation } from "../store/features/product";
+import { useCreateProduct } from "../hooks/server-states/product";
 
 const initProduct = {
 	title: "",
@@ -10,8 +11,9 @@ const initProduct = {
 
 const AddProduct = () => {
 	const [product, setProduct] = useState(initProduct);
+	const createMutation = useCreateProduct();
 
-	const [addProduct] = useCreateProductMutation();
+	// const [addProduct] = useCreateProductMutation();
 
 	const handleChange = (e) => {
 		console.log(e.target.name);
@@ -21,7 +23,7 @@ const AddProduct = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		addProduct(product);
+		createMutation.mutate(product);
 	};
 
 	return (

@@ -1,13 +1,10 @@
 import ProductCard from "../components/ProductCard";
-import { useGetAllProductsQuery } from "../store/features/product";
+// import { useGetAllProductsQuery } from "../store/features/product";
+import { useQuery } from "@tanstack/react-query";
+import { useGetAllProducts } from "../hooks/server-states/product";
 
 const Shop = () => {
-	const {
-		isFetching,
-		isError,
-		error,
-		data: products,
-	} = useGetAllProductsQuery();
+	const { isFetching, isError, error, products } = useGetAllProducts();
 	if (isFetching) {
 		return <h4>Data is Loading....</h4>;
 	}
