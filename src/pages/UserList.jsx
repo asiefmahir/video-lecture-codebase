@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUser } from "../store/middlewares";
+// import { fetchUser } from "../store/middlewares";
+import { fetchUserList } from "../store/reducers/user";
 
 const UserList = () => {
 	const { isLoading, users, errorMessage } = useSelector(
@@ -10,7 +11,7 @@ const UserList = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchUser);
+		dispatch(fetchUserList());
 	}, []);
 	return (
 		<div>

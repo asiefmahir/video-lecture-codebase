@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPost } from "../store/middlewares";
+import { fetchPostList } from "../store/reducers/post";
 
 const PostList = () => {
 	const { isLoading, posts, errorMessage } = useSelector(
@@ -10,7 +10,7 @@ const PostList = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchPost);
+		dispatch(fetchPostList());
 	}, []);
 	return (
 		<div>
