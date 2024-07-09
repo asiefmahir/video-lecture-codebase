@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
+import { useGetAllProductsQuery } from "../store/features/product";
 
 const Shop = () => {
-	const [products, setProducts] = useState([]);
-
-	useEffect(() => {
-		fetch(`http://localhost:4000/products`)
-			.then((res) => res.json())
-			.then((data) => setProducts(data));
-	}, []);
+	const {
+		isFetching,
+		isError,
+		error,
+		data: products,
+	} = useGetAllProductsQuery();
+	if (isFetching) {
+		return <h4>Data is Loading....</h4>;
+	}
 	return (
 		<div>
 			<div className="page-banner">
@@ -27,7 +29,7 @@ const Shop = () => {
 					</div>
 					<div className="section__content">
 						<div className="grid three">
-							{products.map((product) => (
+							{products?.map((product) => (
 								<ProductCard
 									key={product.id}
 									product={product}
