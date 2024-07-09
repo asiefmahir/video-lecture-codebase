@@ -9,23 +9,12 @@ const Nav = () => {
 						<li>
 							<Link href="/">Shop</Link>
 						</li>
-						<li>
-							<Link href="/cart">Cart</Link>
-						</li>
-						<li>
-							<Link href="/posts">Posts</Link>
-						</li>
-						<li>
-							<Link href="/team">Team</Link>
-						</li>
+
 						<li>
 							<Link href="/add-product">Add product</Link>
 						</li>
 						<li>
 							<Link href="/all-products">All products</Link>
-						</li>
-						<li>
-							<Link href="/all-notes">All Notes</Link>
 						</li>
 					</ul>
 				</nav>
