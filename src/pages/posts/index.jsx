@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Posts = ({ posts }) => {
 	console.log("Posts Rendering");
 
@@ -6,7 +8,9 @@ const Posts = ({ posts }) => {
 			<h2>All Posts</h2>
 			<ul>
 				{posts.map((post) => (
-					<li key={post.id}>{post.title}</li>
+					<li key={post.id}>
+						<Link href={`/posts/${post.id}`}>{post.title}</Link>
+					</li>
 				))}
 			</ul>
 		</div>
