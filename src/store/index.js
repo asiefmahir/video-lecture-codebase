@@ -28,6 +28,7 @@ import { themeReducer } from "./reducers/theme";
 import { cartReducer } from "./reducers/cart";
 import postReducer from "./reducers/post";
 import userReducer from "./reducers/user";
+import { rootApi } from "./features/apiSlice";
 
 const rootReducer = {
 	counter: counterReducer,
@@ -35,8 +36,11 @@ const rootReducer = {
 	cart: cartReducer,
 	post: postReducer,
 	user: userReducer,
+	[rootApi.reducerPath]: rootApi.reducer,
 };
 
 export const store = configureStore({
 	reducer: rootReducer,
+	middleware: (getDefaultMiddleWare) =>
+		getDefaultMiddleWare().concat(rootApi.middleware),
 });
