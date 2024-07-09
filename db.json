@@ -47,6 +47,46 @@
 			"id": "8",
 			"title": "Newer newest Post",
 			"body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+		},
+		{
+			"userId": 1,
+			"id": "9",
+			"title": "Post No 9",
+			"body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+		},
+		{
+			"userId": 1,
+			"id": "10",
+			"title": "Post No 10",
+			"body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+		},
+		{
+			"userId": 1,
+			"id": "11",
+			"title": "Post No 11",
+			"body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+		},
+		{
+			"userId": 1,
+			"id": "12",
+			"title": "Post No 12",
+			"body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+		}
+	],
+	"products": [
+		{
+			"title": "A new doll",
+			"description": "doll",
+			"price": "89",
+			"image": "https://images.pexels.com/photos/207983/pexels-photo-207983.jpeg?auto=compress&cs=tinysrgb&w=400",
+			"id": "Evm45v7"
+		},
+		{
+			"title": "A baseball bat",
+			"description": "something",
+			"price": "258",
+			"image": "https://images.pexels.com/photos/843341/pexels-photo-843341.jpeg?auto=compress&cs=tinysrgb&w=400",
+			"id": "aPn3wgL"
 		}
 	]
 }
